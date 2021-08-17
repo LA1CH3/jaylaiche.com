@@ -1,5 +1,25 @@
-import { Text } from "@la1ch3/ui";
+import { PageLayout } from "../components";
+import { getAllPosts } from "../util/getAllPosts";
 
-const Index = () => <Text size="giant">Test</Text>;
+export async function getStaticProps() {
+  const posts = getAllPosts();
+
+  return {
+    props: {
+      posts,
+    },
+  };
+}
+
+const Index = ({ posts }) => (
+  <PageLayout>
+    {posts.map((post) => (
+      <>
+        <div>{post.link}</div>
+        <div>{post.meta.title}</div>
+      </>
+    ))}
+  </PageLayout>
+);
 
 export default Index;
