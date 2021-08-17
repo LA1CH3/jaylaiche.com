@@ -1,4 +1,4 @@
-import { PageLayout } from "../components";
+import { AppLayout, PostList } from "../components";
 import { getAllPosts } from "../util/getAllPosts";
 
 export async function getStaticProps() {
@@ -12,14 +12,9 @@ export async function getStaticProps() {
 }
 
 const Index = ({ posts }) => (
-  <PageLayout>
-    {posts.map((post) => (
-      <>
-        <div>{post.link}</div>
-        <div>{post.meta.title}</div>
-      </>
-    ))}
-  </PageLayout>
+  <AppLayout>
+    <PostList posts={posts} />
+  </AppLayout>
 );
 
 export default Index;

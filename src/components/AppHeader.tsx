@@ -1,7 +1,11 @@
 import { Column, Divider, Text } from "@la1ch3/ui";
 
 export const AppHeader = () => (
-  <Column gap="large" align="center" css={{ paddingTop: "$giant" }}>
+  <Column
+    gap="large"
+    align="center"
+    css={{ paddingTop: "$giant", paddingBottom: "$large" }}
+  >
     <Text as="h1" size="huge" weight="bold">
       jay laiche
     </Text>

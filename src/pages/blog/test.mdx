@@ -1,15 +1,18 @@
+import { Button } from "@la1ch3/ui";
+
+import { AppLayout } from "../../components/AppLayout";
+
 export const meta = {
-  title: "Markdown/MDX with Next.js",
-  author: "Lee Robinson",
+  title: "Rebuilding (again)",
+  date: "August 17, 2021",
 };
 
-export default ({ children }) => (
-  <div>
-    <h1>This is a test</h1>
-    {children}
-  </div>
-);
+export default ({ children }) => <AppLayout meta={meta}>{children}</AppLayout>;
 
-# MDX + Next.js
+Here is a test paragraph.
 
-Look, a button! 👇
+And here is another.
+
+Here is a [test link](google.com).
+
+<Button>A button in MDX</Button>
