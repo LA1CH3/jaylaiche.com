@@ -1,23 +1,28 @@
 import { AppContent, AppRoot } from "@la1ch3/ui";
 import { ReactNode } from "react";
 
-import { AppHeader, AppWidth } from ".";
+import { AppHeader, AppWidth, AppFooter } from ".";
 import { PostMeta } from "../util/getAllPosts";
-import { PostLayout } from "./PostLayout";
+import { MdxLayout } from "./MdxLayout";
 
 type AppLayoutProps = {
   children: ReactNode;
   meta?: PostMeta;
+  home?: boolean;
 };
 
-export const AppLayout = ({ children, meta }: AppLayoutProps): JSX.Element => (
+export const AppLayout = ({
+  children,
+  home,
+  meta,
+}: AppLayoutProps): JSX.Element => (
   <AppRoot>
     <AppWidth>
       <AppHeader />
       <AppContent css={{ width: "100%" }}>
-        {meta ? <PostLayout meta={meta}>{children}</PostLayout> : children}
+        {!home ? <MdxLayout meta={meta}>{children}</MdxLayout> : children}
       </AppContent>
-      <footer>Hey</footer>
+      <AppFooter />
     </AppWidth>
   </AppRoot>
 );

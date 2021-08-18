@@ -12,7 +12,7 @@ export async function getStaticProps() {
 }
 
 const Index = ({ posts }) => (
-  <AppLayout>
+  <AppLayout home>
     <PostList posts={posts} />
   </AppLayout>
 );

@@ -1,4 +1,4 @@
-import { styled, Column } from "@la1ch3/ui";
+import { styled } from "@la1ch3/ui";
 
 export const AppWidth = styled("div", {
   width: "100%",
@@ -8,4 +8,5 @@ export const AppWidth = styled("div", {
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
+  padding: "$small",
 });
