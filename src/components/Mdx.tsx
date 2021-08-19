@@ -1,4 +1,4 @@
-import { Text, styled } from "@la1ch3/ui";
+import { Text, styled, UnorderedList } from "@la1ch3/ui";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import shades from "prism-react-renderer/themes/shadesOfPurple";
 
@@ -8,8 +8,18 @@ export const H2 = ({ children }) => (
   </Text>
 );
 
+export const H3 = ({ children }) => (
+  <Text size="medium" css={{ marginBottom: "$medium" }} weight="semibold">
+    {children}
+  </Text>
+);
+
 export const P = ({ children }) => (
   <Text css={{ marginBottom: "$large" }}>{children}</Text>
+);
+
+export const Ul = ({ children }) => (
+  <UnorderedList gap="medium">{children}</UnorderedList>
 );
 
 export const Pre = styled("div", {

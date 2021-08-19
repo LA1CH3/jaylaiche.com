@@ -1,0 +1,46 @@
+import { AppLayout } from "../../components/AppLayout";
+
+export const meta = {
+  title: "Building This Site",
+  date: "2019-09-25",
+};
+
+export default ({ children }) => <AppLayout meta={meta}>{children}</AppLayout>;
+
+I built my former personal website over the course of just a night or two several years ago. I was lazy; it was horribly designed, wasn't responsive, had no blogging functionality, but at least I had a cool typewriter animation on the homepage? ¯\\\_(ツ)\_/¯
+
+For whatever reason, I recently decided now was the time I wanted to rebuild my site. I went through a number of designs, changed my mind on the technical approach multiple times, but ultimately landed on a minimalistic design with the actual build consisting of [Gatsby](https://www.gatsbyjs.org/), [MDX](https://mdxjs.com/) and [Theme UI](https://theme-ui.com/).
+
+If you're interested, my experience with each tool is detailed below.
+
+### Gatsby
+
+I'm a huge fan of React, so its no surprise I'd want to use a tool like Gatsby for my own site. For the uninitiated, Gatsby is a static-site generator that uses React for templating and GraphQL for data-fetching. Its a perfect choice for personal websites and documentation sites with its ability to ingest content in a number of formats and dynamically produce pages based on templates.
+
+The basic gist of how it works is that you create a React template for a page, and then define a GraphQL query for data you want used on that page. The query data can be anything from your own content (blog posts you wrote, for example) to external APIs your site may be calling. The declarative nature of both React and GraphQL naturally complement each other and lead to a very straight-forward developer experience when building pages- you know exactly how your template will look and function, and exactly what data that template has access to.
+
+Gatsby has a huge community as well- it has a wealth of documentation, numerous plugins for additional functionality, and is constantly being improved.
+
+I wanted a blog, which my previous site didn't have, and Gatsby made this incredibly simple.
+
+### MDX
+
+MDX, in a nutshell, is Markdown + JSX. It provides tools for authoring in Markdown while being able to seamlessly embed components, typically in React, alongside the rest of your content. This is very powerful and handy if you want to author in Markdown (like I'm doing right now) but sometimes want to embed components to support your content. This is a very desired pattern for documentation sites in-particular, as you often will want to display interactive components as examples within your content.
+
+Most examples of authoring with Markdown within Gatsby use a tool called [Remark](https://remark.js.org/), which is a powerful Markdown processing engine with a large plugin ecosystem. Remark works quite well, and in-fact, MDX uses Remark under-the-hood. While its possible to configure Remark to support custom React components when used with a sister tool [Rehype](https://github.com/rehypejs/rehype) (all part of the [Unified Collective](https://unifiedjs.com/)), it can get quite complex. MDX takes care of this for you with simple, extensible APIs for further configuration. MDX can even accept both Remark and Rehype plugins to its configuration, making a switch from Remark to MDX quite seamless.
+
+I wanted to author in Markdown but have the ability to render React components in my writing with as much ease as possible- MDX makes this possible in a dead-simple fashion.
+
+### Theme UI
+
+I work on a design system team at Capital One and over the past years have found a lot of value in constraint-based design. Consistent styling patterns, enhanced productivity and easier maintainability are a few of the benefits to be had. I've been a big fan of Brent Jackson's work over the years with [`styled-system`](https://styled-system.com/) and [`Rebass`](https://rebassjs.org/), and so when I discovered Theme UI, I decided to give it a try.
+
+Theme UI is a CSS-in-JS tool; you define a theme, which is essentially a mini design-system comprised of [design tokens](https://css-tricks.com/what-are-design-tokens/). The actual object structure of the theme itself is based off of a [theme specification](https://system-ui.com/theme) proposed by Brent Jackson. Once the theme is defined, you can then use values at-will as you style components, mainly through usage of the `sx` prop. The `sx` prop is similar to the `css` prop in [`emotion`](https://emotion.sh/docs/introduction), with the added feature of having direct access to values from your theme. Additionally, once breakpoints are defined in your theme, you can apply style values responsively using an array syntax popularized by tools like `styled-system` and [`facepaint`](https://github.com/emotion-js/facepaint). This makes styling for responsive design a total breeze.
+
+Another neat feature of Theme UI is its [color modes](https://theme-ui.com/color-modes/) feature, which allows you set multiple color modes of a theme, and use a custom [hook](https://reactjs.org/docs/hooks-intro.html) in your components to change the mode. Creating light & dark modes becomes quite trivial using color modes, but in theory you could create hundreds of color modes that could be switched via this functionality.
+
+Theme UI also comes with a Gatsby plugin that is able to propogate styles defined in the theme to your rendered Markdown content. This opens the door for being able to publish and consume themes quite easily when building sites with Gatsby, but you could just as easily share your theme on its own and anyone using Theme UI, Gatsby or not, could easily drop it in and use. I found Theme UI to be quite easy to work with and a good fit for content-heavy sites like a personal site or a documentation site.
+
+### So?
+
+Overall, I was quite happy with the choices made and feel much more confident about the long-term scalability and maintainability of my site. I encourage you to check out these tools if you are looking into building your own site.

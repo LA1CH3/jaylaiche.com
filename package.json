@@ -7,10 +7,11 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@la1ch3/ui": "^0.0.7",
+    "@la1ch3/ui": "^0.0.18",
     "@mdx-js/loader": "^1.5.1",
     "@mdx-js/react": "^1.6.18",
     "@next/mdx": "^9.1.1",
+    "date-fns": "^2.23.0",
     "next": "latest",
     "prism-react-renderer": "^1.2.1",
     "react": "^17.0.2",

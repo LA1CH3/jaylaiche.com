@@ -307,10 +307,10 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.0.tgz#87de7af9c231826fdd68ac7258f77c429e0e5fcf"
   integrity sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==
 
-"@la1ch3/ui@^0.0.7":
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/@la1ch3/ui/-/ui-0.0.7.tgz#2af438c227959a9fa1daf72fa814bd738c62afdb"
-  integrity sha512-3VN1RQRi2UO6mYhyYaU8x6Rueqr+nTyy7Nc2UrHGOqL28iHFt/FRmJAH5/fWsF3pl1+VDJCTO2sBQRd5nuWY+A==
+"@la1ch3/ui@^0.0.18":
+  version "0.0.18"
+  resolved "https://registry.yarnpkg.com/@la1ch3/ui/-/ui-0.0.18.tgz#7871b77be8b158089d34324de59082c0bcc5ffb8"
+  integrity sha512-T28H82iog8fDWm15p/jvCtxoKCdKQdJZ7+stR6B+z7nCw/fv3r15HE4Rcvk5FTVsdIiBzCw7Asv9J4koAZR3zg==
   dependencies:
     "@stitches/react" "^0.2.3"
 
@@ -1241,6 +1241,11 @@ data-uri-to-buffer@3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/data-uri-to-buffer/-/data-uri-to-buffer-3.0.1.tgz#594b8973938c5bc2c33046535785341abc4f3636"
   integrity sha512-WboRycPNsVw3B3TL559F7kuBUM4d8CgMEvk6xEJlOp7OBPjt6G7z8WMWlD2rOFZLk6OYfFIUGsCOWzcQH9K2og==
+
+date-fns@^2.23.0:
+  version "2.23.0"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.23.0.tgz#4e886c941659af0cf7b30fafdd1eaa37e88788a9"
+  integrity sha512-5ycpauovVyAk0kXNZz6ZoB9AYMZB4DObse7P3BPWmyEjXNORTI8EJ6X0uaSAq4sCHzM1uajzrkr6HnsLQpxGXA==
 
 debug@2, debug@^2.6.9:
   version "2.6.9"
