@@ -1,6 +1,7 @@
-import { Text, styled, UnorderedList } from "@la1ch3/ui";
+import { Text, styled, UnorderedList, useColorMode } from "@la1ch3/ui";
 import Highlight, { defaultProps } from "prism-react-renderer";
-import shades from "prism-react-renderer/themes/shadesOfPurple";
+import darkTheme from "prism-react-renderer/themes/shadesOfPurple";
+import lightTheme from "prism-react-renderer/themes/nightOwlLight";
 
 export const H2 = ({ children }) => (
   <Text size="large" css={{ marginBottom: "$large" }}>
@@ -29,12 +30,16 @@ export const Pre = styled("div", {
 });
 
 export const Code = ({ children, className }) => {
+  const [colorMode] = useColorMode();
+
   const language = className.replace(/language-/, "");
+
+  const syntaxTheme = colorMode === "dark" ? lightTheme : darkTheme;
 
   return (
     <Highlight
       {...defaultProps}
-      theme={shades}
+      theme={syntaxTheme}
       code={children}
       language={language}
     >
