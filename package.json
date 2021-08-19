@@ -7,7 +7,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@la1ch3/ui": "^0.0.19",
+    "@la1ch3/ui": "^0.0.20",
     "@mdx-js/loader": "^1.5.1",
     "@mdx-js/react": "^1.6.18",
     "@next/mdx": "^9.1.1",

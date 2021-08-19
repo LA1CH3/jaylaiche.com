@@ -307,10 +307,10 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.0.tgz#87de7af9c231826fdd68ac7258f77c429e0e5fcf"
   integrity sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==
 
-"@la1ch3/ui@^0.0.19":
-  version "0.0.19"
-  resolved "https://registry.yarnpkg.com/@la1ch3/ui/-/ui-0.0.19.tgz#f6ec204746254dd66eedb5c803890cab28779a3c"
-  integrity sha512-FwCBqTDZqccvebUUtuNEFfppG78P3wPcc9+riXa6Y8fB7+18zmQinMNjoYKcoyj0n3Io6XYlvTci96rysQ1lFg==
+"@la1ch3/ui@^0.0.20":
+  version "0.0.20"
+  resolved "https://registry.yarnpkg.com/@la1ch3/ui/-/ui-0.0.20.tgz#4e7a7432ac1201e6825d0037e22497aada546695"
+  integrity sha512-qN/+uvKxM5Rz1Ru9aRT0yi/T+kTfjCSn1hrLVYw9ZK96N79kNNlkHAeAjvElEQAcaf3DF+NViXtxRlpAldQPKQ==
   dependencies:
     "@stitches/react" "^0.2.3"
 
