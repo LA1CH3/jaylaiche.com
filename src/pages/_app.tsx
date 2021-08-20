@@ -1,4 +1,6 @@
-import { globalStyles, ColorModeProvider, AppRoot } from "@la1ch3/ui";
+import { globalStyles, AppRoot } from "@la1ch3/ui";
+
+import { ColorModeProvider } from "../util/ColorModeProvider";
 
 function App({ Component, pageProps }) {
   globalStyles();

@@ -1,12 +1,22 @@
-import { Row, useColorMode, Button } from "@la1ch3/ui";
+import { Row, Button } from "@la1ch3/ui";
 
 import { NextLink } from ".";
 import { AppWidth } from "./AppWidth";
 
+import { useColorMode } from "../util/ColorModeProvider";
+
 export const AppFooter = () => {
-  const [colorMode, toggleMode] = useColorMode();
+  const [colorMode, setMode] = useColorMode();
 
   const buttonText = `${colorMode === "light" ? "Dark" : "Light"} Mode`;
+
+  const toggleMode = () => {
+    if (colorMode === "dark") {
+      setMode("light");
+    } else {
+      setMode("dark");
+    }
+  };
 
   return (
     <AppWidth>
