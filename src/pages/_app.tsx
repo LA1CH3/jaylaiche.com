@@ -2,8 +2,10 @@ import { globalStyles, AppRoot } from "@la1ch3/ui";
 
 import { ColorModeProvider } from "../util/ColorModeProvider";
 
+import "../util/globals.css";
+
 function App({ Component, pageProps }) {
-  globalStyles();
+  // globalStyles();
 
   return (
     <ColorModeProvider>
