@@ -25,8 +25,10 @@ export const Ul = ({ children }) => (
 
 export const Pre = styled("div", {
   width: "100%",
-  marginTop: "$large",
-  fontFamily: "monospace",
+  marginBottom: "$large",
+  fontFamily: "Menlo, monospace",
+  fontSize: "$baseline",
+  overflowX: "auto",
 });
 
 export const Code = ({ children, className }) => {

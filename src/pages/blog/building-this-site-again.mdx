@@ -1,4 +1,4 @@
-import { Button } from "@la1ch3/ui";
+import { Button, Row } from "@la1ch3/ui";
 
 import { AppLayout } from "../../components/AppLayout";
 
@@ -9,16 +9,138 @@ export const meta = {
 
 export default ({ children }) => <AppLayout meta={meta}>{children}</AppLayout>;
 
-Here is a test paragraph.
+Well, two years later, and its time for another rebuild of the personal website. While its no major overhaul by any means, and its more-or-less the same design, I wanted to try out some new front-end tech and make it simple to work with going forward.
 
-And here is another.
+Rather than outlining the core components individually like I did in my [first rebuilding post](./building-this-site), I'd rather discuss in terms of my personal requirements and how I came to the decisions for what tools were used.
 
-Here is a [test link](google.com).
+### architecture
 
-<Button>A button in MDX</Button>
+Before getting into capabilities, I needed to decide how I was actually going to build the site. Since this is just a personal website, I knew I wanted to go static- this would result in enhanced page performance and improved SEO. But, there are a lot of options today- [Eleventy](https://www.11ty.dev/), [Hugo](https://gohugo.io/), [Gatsby](https://www.gatsbyjs.com/) (what I was using previously) just to name a few.
+
+However, being a React lover, and wanting an excuse to try out something new, I ultimately went with a statically-generated [Next.js](https://nextjs.org/) app. While I could have stuck with Gatsby (and I still think Gatsby is an amazing tool), Next was able to offer much of same capabilities I needed from Gatsby in a bit simpler API. For example, I was able to ditch the GraphQL queries for my templates and simply use `getStaticProps` for any data needs my template would need.
+
+```ts
+// getAllPosts.ts
+
+function importAll(r) {
+  return r
+    .keys()
+    .map((fileName) => ({
+      link: `/blog${fileName.substr(1).replace(/\.mdx$/, "")}`,
+      meta: r(fileName).meta,
+    }))
+    .sort((a, b) => compareDesc(parseISO(a.meta.date), parseISO(b.meta.date)));
+}
+
+export const getAllPosts = () =>
+  importAll(require.context("../pages/blog/", true, /\.mdx$/));
+```
 
 ```tsx
-const thing = "hello";
+// homepage.ts
 
-const MyComponent = () => <div>Hey</div>;
+export const getStaticProps = () => {
+  const posts = getAllPosts();
+
+  return {
+    props: {
+      posts,
+    },
+  };
+};
+
+const Homepage = ({ posts }) => (
+  <>
+    {posts.map((post) => (
+      <div>{post.title}</div>
+    ))}
+  </>
+);
+
+export default Homepage;
 ```
+
+This also simply gave me an excuse to gain some more familiarity with Next. Next has some really cool features such as API routes (bundled API with your Next app which can be deployed on Vercel as serverless functions) and hybrid static/SSR apps (static generation on some pages, SSR on others).
+
+Lastly, Next is perfectly optimized to deploy to the [Vercel](https://vercel.com/) platform (makes sense since they are the maintainers of Next). It took literally less than 5 minutes to connect my Github repo to Vercel and deploy my app on their platform. They provided easy steps to point my domain (which is hosted on AWS Route 53) to my Vercel domain. Best of all, your site now lives on their [global edge network](https://vercel.com/docs/edge-network/overview) and you get SSL for free with auto-renewal.
+
+### styling
+
+I previously used [theme-ui](https://theme-ui.com/) to build my site. I really loved using it, and it seems like since two years ago, its become even more awesome (for example, they now offer 30+ primitive components). I originally got onboard with it because I was a huge fan of the idea of a [theme specification](https://theme-ui.com/theme-spec/). This can greatly increase interopability between tools- specifically, it could allow design system tokens to be easily consumed in various contexts with less friction. Theme UI really combines the best of [Rebass](https://rebassjs.org/) and [styled-system](https://styled-system.com/) with theme-aware capabilities.
+
+However, again, in a desire to play with new things, I decided to build a small yet efficient design system using [Stitches](https://stitches.dev/). Much like Theme UI, Stitches follows the theme specification to configure your design system- from there, you are able to create theme-aware components with ease.
+
+```ts
+// styled.config.ts
+
+import { createCss } from "@stitches/react";
+
+export const { styled } = createCss({
+  theme: {
+    colors: {
+      ink0: "black",
+      ink100: "white",
+    },
+  },
+});
+```
+
+```ts
+// Text.ts
+
+import { styled } from "./styled.config.ts";
+
+const Text = styled("div", {
+  color: "$ink0",
+});
+```
+
+A big selling point of Stitches is its TypeScript support- you gain intellisense autocompletion when writing styles to inform you of available and appropriate token values to use. This not only makes authoring your own components much easier- but can also allow consumers of your system who may need to override styles to have easy access to tokens, leading to less "one-off" ad-hoc values.
+
+Much like Theme UI's SX prop, all Stitches components also expose a css prop that can be used for ad-hoc styles that are still theme-aware.
+
+Stitches also places a big emphasis on component "variants", which are just different styling configurations of a given component. For example, I have a "ghost" variant for my buttons in the system. When defining these variants, again, you have full-access to the theme values.
+
+```ts
+const Button = styled("button", {
+  backgroundColor: "$ink0",
+  color: "$ink100",
+  variants: {
+    ghost: {
+      true: {
+        backgroundColor: "transparent",
+        border: "1px solid $ink0",
+        color: "$ink0",
+      },
+      false: {},
+    },
+  },
+});
+```
+
+Here's an example of my Button component with both variants.
+
+<Row width="100%" gap="huge" css={{ marginBottom: "$medium" }}>
+  <Button>Default</Button>
+  <Button ghost>Ghost</Button>
+</Row>
+
+Theme UI is much more mature than Stitches at this point, and if I were looking to build a large, scalable React design system, I would probably choose Theme UI. However, Stitches brings some great ideas to the table, and I think when combined with [Radix](https://www.radix-ui.com/), is equally as powerful.
+
+### authoring
+
+As a developer, I have come to love Markdown. And as a developer, I have come to love React. It should be no surprise then that I chose [MDX](https://mdxjs.com/) (again) to author my posts.
+
+With Next, this was quite simple to setup. By using the [@next/mdx](https://github.com/vercel/next.js/tree/canary/packages/next-mdx) package, I was able to simply create .mdx files in my pages directory and they automagically were picked up and parsed correctly by Next.
+
+One of the benefits of this is now I can embed React components directly in my blog posts, like below.
+
+<Button css={{ marginBottom: "$medium" }}>I'm a React component!</Button>
+
+While simply a button is trivial, you could import entire stateful, complex components into your Markdown file for whatever purpose you have.
+
+And while I'm not doing this, you can also configure any [Remark](https://remark.js.org/) or [Rehype](https://github.com/rehypejs/rehype) plugins to run on your files as well.
+
+### so...
+
+Next.JS, Stitches, and MDX in 2021. What do you think the stack will be in 2023?
