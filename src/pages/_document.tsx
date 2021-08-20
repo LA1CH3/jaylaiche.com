@@ -10,13 +10,13 @@ export default class Document extends NextDocument {
     return (
       <Html lang="en">
         <Head>
-          <ColorModeScript />
           <style
             id="stitches"
             dangerouslySetInnerHTML={{ __html: getCssString() }}
           />
         </Head>
         <body>
+          <ColorModeScript />
           <Main />
           <NextScript />
         </body>
