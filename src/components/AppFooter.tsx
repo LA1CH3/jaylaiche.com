@@ -1,4 +1,4 @@
-import { Row, Button } from "@la1ch3/ui";
+import { Row, Anchor } from "@la1ch3/ui";
 
 import { NextLink } from ".";
 import { AppWidth } from "./AppWidth";
@@ -8,7 +8,7 @@ import { useColorMode } from "../util/ColorModeProvider";
 export const AppFooter = () => {
   const [colorMode, setMode] = useColorMode();
 
-  const buttonText = `${colorMode === "light" ? "Dark" : "Light"} Mode`;
+  const buttonText = `${colorMode === "light" ? "dark" : "light"} mode`;
 
   const toggleMode = () => {
     if (colorMode === "dark") {
@@ -20,7 +20,12 @@ export const AppFooter = () => {
 
   return (
     <AppWidth>
-      <Row width="100%" justify="between" align="center">
+      <Row
+        width="100%"
+        justify="between"
+        align="baseline"
+        css={{ marginBottom: "$large" }}
+      >
         <Row
           gap={{
             "@initial": "small",
@@ -31,9 +36,9 @@ export const AppFooter = () => {
           <NextLink href="/portfolio">portfolio</NextLink>
           <NextLink href="/contact">contact</NextLink>
         </Row>
-        <Button ghost onClick={toggleMode}>
+        <Anchor href="javascript:void(0)" onClick={toggleMode}>
           {buttonText}
-        </Button>
+        </Anchor>
       </Row>
     </AppWidth>
   );

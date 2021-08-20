@@ -1,1 +1,10 @@
-{}
+{
+  "overrides": [
+    {
+      "files": "*.mdx",
+      "options": {
+        "printWidth": 40
+      }
+    }
+  ]
+}

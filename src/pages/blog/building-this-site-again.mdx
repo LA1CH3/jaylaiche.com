@@ -1,4 +1,7 @@
-import { Button, Row } from "@la1ch3/ui";
+import {
+  Button,
+  Row,
+} from "@la1ch3/ui";
 
 import { AppLayout } from "../../components/AppLayout";
 
@@ -7,7 +10,11 @@ export const meta = {
   date: "2021-08-18",
 };
 
-export default ({ children }) => <AppLayout meta={meta}>{children}</AppLayout>;
+export default ({ children }) => (
+  <AppLayout meta={meta}>
+    {children}
+  </AppLayout>
+);
 
 Well, two years later, and its time for another rebuild of the personal website. While its no major overhaul by any means, and its more-or-less the same design, I wanted to try out some new front-end tech and make it simple to work with going forward.
 
@@ -26,14 +33,27 @@ function importAll(r) {
   return r
     .keys()
     .map((fileName) => ({
-      link: `/blog${fileName.substr(1).replace(/\.mdx$/, "")}`,
+      link: `/blog${fileName
+        .substr(1)
+        .replace(/\.mdx$/, "")}`,
       meta: r(fileName).meta,
     }))
-    .sort((a, b) => compareDesc(parseISO(a.meta.date), parseISO(b.meta.date)));
+    .sort((a, b) =>
+      compareDesc(
+        parseISO(a.meta.date),
+        parseISO(b.meta.date)
+      )
+    );
 }
 
 export const getAllPosts = () =>
-  importAll(require.context("../pages/blog/", true, /\.mdx$/));
+  importAll(
+    require.context(
+      "../pages/blog/",
+      true,
+      /\.mdx$/
+    )
+  );
 ```
 
 ```tsx
@@ -120,7 +140,11 @@ const Button = styled("button", {
 
 Here's an example of my Button component with both variants.
 
-<Row width="100%" gap="huge" css={{ marginBottom: "$medium" }}>
+<Row
+  width="100%"
+  gap="huge"
+  css={{ marginBottom: "$medium" }}
+>
   <Button>Default</Button>
   <Button ghost>Ghost</Button>
 </Row>
@@ -135,7 +159,11 @@ With Next, this was quite simple to setup. By using the [@next/mdx](https://gith
 
 One of the benefits of this is now I can embed React components directly in my blog posts, like below.
 
-<Button css={{ marginBottom: "$medium" }}>I'm a React component!</Button>
+<Button
+  css={{ marginBottom: "$medium" }}
+>
+  I'm a React component!
+</Button>
 
 While simply a button is trivial, you could import entire stateful, complex components into your Markdown file for whatever purpose you have.
 

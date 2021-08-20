@@ -1,7 +1,7 @@
 import { darkTheme } from "@la1ch3/ui";
 
 export const ColorModeScript = () => {
-  const stuff = `
+  const script = `
     (function() {
       const getInitialColorMode = () => {
         const persistedColorPreference = window.localStorage.getItem("colorMode");
@@ -28,8 +28,8 @@ export const ColorModeScript = () => {
       if (colorMode === 'dark') {
         root.classList.add("${darkTheme}");
       }
-    })();
+    })()
   `;
 
-  return <script dangerouslySetInnerHTML={{ __html: stuff }}></script>;
+  return <script dangerouslySetInnerHTML={{ __html: script }}></script>;
 };

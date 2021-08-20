@@ -20,7 +20,11 @@ export const MdxLayout = ({ meta, children }) => {
     <AppWidth>
       <Column width="100%">
         {meta && (
-          <Column align="center" width="100%" css={{ marginBottom: "$huge" }}>
+          <Column
+            align="center"
+            width="100%"
+            css={{ marginBottom: "$huge", textAlign: "center" }}
+          >
             <Text size="large" weight="bold">
               {meta.title}
             </Text>

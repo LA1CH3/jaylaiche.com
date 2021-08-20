@@ -1,7 +1,9 @@
-import { Text, styled, UnorderedList, useColorMode } from "@la1ch3/ui";
+import { Text, styled, UnorderedList } from "@la1ch3/ui";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import darkTheme from "prism-react-renderer/themes/shadesOfPurple";
 import lightTheme from "prism-react-renderer/themes/nightOwlLight";
+
+import { useColorMode } from "../util/ColorModeProvider";
 
 export const H2 = ({ children }) => (
   <Text size="large" css={{ marginBottom: "$large" }}>
@@ -24,11 +26,10 @@ export const Ul = ({ children }) => (
 );
 
 export const Pre = styled("div", {
-  width: "100%",
   marginBottom: "$large",
   fontFamily: "Menlo, monospace",
   fontSize: "$baseline",
-  overflowX: "auto",
+  width: "100%",
 });
 
 export const Code = ({ children, className }) => {
@@ -48,7 +49,11 @@ export const Code = ({ children, className }) => {
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <pre
           className={className}
-          style={{ ...style, padding: "20px", borderRadius: "2px" }}
+          style={{
+            ...style,
+            padding: "20px",
+            borderRadius: "2px",
+          }}
         >
           {tokens.slice(0, -1).map((line, i) => (
             <div key={i} {...getLineProps({ line, key: i })} id="thingy">
