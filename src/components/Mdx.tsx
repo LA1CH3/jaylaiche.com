@@ -53,6 +53,7 @@ export const Code = ({ children, className }) => {
             ...style,
             padding: "20px",
             borderRadius: "2px",
+            overflow: "auto",
           }}
         >
           {tokens.slice(0, -1).map((line, i) => (

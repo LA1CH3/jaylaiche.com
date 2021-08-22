@@ -36,7 +36,16 @@ export const AppFooter = () => {
           <NextLink href="/portfolio">portfolio</NextLink>
           <NextLink href="/contact">contact</NextLink>
         </Row>
-        <Anchor href="javascript:void(0)" onClick={toggleMode}>
+        <Anchor
+          as="button"
+          onClick={toggleMode}
+          css={{
+            fontSize: "$baseline",
+            appearance: "none",
+            backgroundColor: "transparent",
+            border: 0,
+          }}
+        >
           {buttonText}
         </Anchor>
       </Row>
