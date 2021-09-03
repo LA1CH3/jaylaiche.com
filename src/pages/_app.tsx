@@ -8,7 +8,7 @@ import "../util/globals.css";
 function App({ Component, pageProps }) {
   return (
     <ColorModeProvider>
-      <AppRoot css={{ paddingLeft: "calc(100vw - 100%)" }}>
+      <AppRoot css={{ paddingLeft: "calc(100vw - 100%)", overflowX: "hidden" }}>
         <AppHeader />
         <AppContent css={{ width: "100%" }}>
           <Component {...pageProps} />
