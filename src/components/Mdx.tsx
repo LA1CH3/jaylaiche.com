@@ -1,9 +1,17 @@
+import NextImage from "next/image";
 import { Text, styled, UnorderedList } from "@la1ch3/ui";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import darkTheme from "prism-react-renderer/themes/shadesOfPurple";
 import lightTheme from "prism-react-renderer/themes/nightOwlLight";
 
 import { useColorMode } from "../util/ColorModeProvider";
+
+export const Img = ({ src, ...props }) => (
+  <NextImage
+    layout="intrinsic"
+    src={require(`../public/static/images/${src}`)}
+  />
+);
 
 export const H2 = ({ children }) => (
   <Text size="large" css={{ marginBottom: "$large" }}>

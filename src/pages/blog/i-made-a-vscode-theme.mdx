@@ -1,0 +1,28 @@
+import { AppLayout } from "../../components/AppLayout";
+
+export const meta = {
+  title: "I Made a VSCode Theme",
+  date: "2021-10-21",
+};
+
+export default ({ children }) => (
+  <AppLayout meta={meta}>
+    {children}
+  </AppLayout>
+);
+
+I have this issue- I can never seem to settle on an editor theme. Since I've never had the gusto to change my hair color, I guess changing my editor theme is the next closest thing. I mean, think about it- we stare at our editors basically all day long, five days a week. A fresh coat of paint every once in a while can keep you from going insane.
+
+After trying out various themes over the years, I had finally find one I could go the distance with- [Solarized](https://ethanschoonover.com/solarized/). Solarized is amazing- I never got super deep into the background behind the color choices but I know the author, Evan Schoonover, really did his work. There's a lot of color science behind the choices he made. For whatever reason, I'm a huge fan of the teals, greens, and oranges in Solarized, and I was even known to rock the light theme version on particularly sunny days.
+
+While Solarized will probably always be my go to, it was that time in the celestial clock for me to switch things up. After perusing available VSCode themes for endless hours, I just couldn't settle on a new one that "clicked" for me. I finally came to the realization- why don't I try my hand at making my own?
+
+The result is what I'm simply calling ["Nova Theme"](https://marketplace.visualstudio.com/items?itemName=LA1CH3.nova-vscode-theme). It's based off the Nova color scheme that ships with the Mac terminal by default (at least, thats where I know it from.) Its the same theme I use for my terminal profile and I've always found the colors to be visually pleasing- slightly muted, not too much contrast, and interesting color choices with yellow-greens, teals, pink-purples. My variant of Nova is slightly modified to my tastes.
+
+![Nova VSCode Theme](nova-theme.png)
+
+You can find more information on Nova colors at the official [GitHub repo](https://github.com/trevordmiller/nova-colors).
+
+I want to give a special shout-out to [Mike Tromba](https://www.buymeacoffee.com/miketromba). I used his [VSCode Theme Studio](https://themes.vscode.one/) web app to do most of the heavy lifting of building this theme. His theme studio is AMAZING. Much easier than directly modifying JSON, and it provides a live-preview of your theme as your editing. One of the nicest features is that when editing each rule, it will put the editor preview into a state where that rule's value can be seen- for example, when editing the integrated terminal, the live preview will update to have the terminal showing. Little things like that made the process very easy and smooth.
+
+If you like what you're seeing, give the theme a try, and please open issues in the [GitHub repo](https://github.com/LA1CH3/nova-vscode-theme) if you notice anything amiss.

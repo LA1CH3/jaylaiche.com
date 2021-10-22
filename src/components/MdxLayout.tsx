@@ -1,7 +1,7 @@
 import { MDXProvider } from "@mdx-js/react";
 import { Column, Text, Anchor } from "@la1ch3/ui";
 
-import { H2, H3, P, Code, Pre, Ul } from "./Mdx";
+import { H2, H3, P, Code, Pre, Ul, Img } from "./Mdx";
 import { AppWidth } from "./AppWidth";
 import { formatDate } from "../util/date";
 
@@ -13,6 +13,7 @@ const components = {
   pre: Pre,
   code: Code,
   ul: Ul,
+  img: Img,
 };
 
 export const MdxLayout = ({ meta, children }) => {
