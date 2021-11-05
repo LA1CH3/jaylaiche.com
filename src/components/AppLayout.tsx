@@ -10,6 +10,8 @@ type AppLayoutProps = {
   home?: boolean;
 };
 
+const META_DESC = "personal blog for jay laiche, front-end developer";
+
 export const AppLayout = ({
   children,
   home,
@@ -21,6 +23,7 @@ export const AppLayout = ({
         {meta && `${meta.title.toLowerCase()} | `}jay laiche - front-end
         developer
       </title>
+      <meta name="description" content={META_DESC} />
     </Head>
     {!home ? <MdxLayout meta={meta}>{children}</MdxLayout> : children}
   </>

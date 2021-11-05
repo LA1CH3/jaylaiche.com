@@ -37,7 +37,6 @@ export const ColorModeProvider = ({
     const root = window.document.documentElement;
 
     if (root.classList.contains(darkTheme)) {
-      console.log("hello");
       setMode("dark");
     } else {
       setMode("light");

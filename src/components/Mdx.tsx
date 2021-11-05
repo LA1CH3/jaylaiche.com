@@ -6,7 +6,7 @@ import lightTheme from "prism-react-renderer/themes/nightOwlLight";
 
 import { useColorMode } from "../util/ColorModeProvider";
 
-export const Img = ({ src, ...props }) => (
+export const Img = ({ src }) => (
   <NextImage
     layout="intrinsic"
     src={require(`../public/static/images/${src}`)}
