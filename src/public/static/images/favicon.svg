@@ -8,7 +8,7 @@
   }
   @media (prefers-color-scheme: dark) {
     .brackets {
-      color: white;
+      fill: white;
     }
     .text {
       fill: #1af0ff;
