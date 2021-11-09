@@ -6,11 +6,10 @@ import lightTheme from "prism-react-renderer/themes/nightOwlLight";
 
 import { useColorMode } from "../util/ColorModeProvider";
 
-export const Img = ({ src }) => (
-  <NextImage
-    layout="intrinsic"
-    src={require(`../public/static/images/${src}`)}
-  />
+export const Img = ({ src, ...props }) => (
+  <div style={{ minWidth: "100%" }}>
+    <NextImage layout="responsive" src={`/images/${src}`} {...props} />
+  </div>
 );
 
 export const H2 = ({ children }) => (
@@ -26,7 +25,7 @@ export const H3 = ({ children }) => (
 );
 
 export const P = ({ children }) => (
-  <Text css={{ marginBottom: "$large" }}>{children}</Text>
+  <Text css={{ marginBottom: "$large", width: "100%" }}>{children}</Text>
 );
 
 export const Ul = ({ children }) => (
