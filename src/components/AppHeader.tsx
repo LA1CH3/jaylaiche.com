@@ -1,6 +1,6 @@
 import { Column, Divider, Row, Text } from "@la1ch3/ui";
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useMemo } from "react";
 
 import { NextLink } from ".";
 import { AppWidth } from "./AppWidth";
@@ -8,6 +8,8 @@ import { usePrefersReducedMotion } from "../util/usePrefersReducedMotion";
 
 export const AppHeader = () => {
   const prefersReducedMotion = usePrefersReducedMotion();
+
+  const animationDuration = prefersReducedMotion ? 0 : 1;
 
   return (
     <AppWidth>
@@ -24,7 +26,7 @@ export const AppHeader = () => {
           <motion.div
             initial={{ x: -500, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: prefersReducedMotion ? 0 : 1 }}
+            transition={{ duration: animationDuration }}
           >
             <Text size="huge" weight="bold">{`{`}</Text>
           </motion.div>
@@ -43,7 +45,7 @@ export const AppHeader = () => {
           <motion.div
             initial={{ x: 500, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: prefersReducedMotion ? 0 : 1 }}
+            transition={{ duration: animationDuration }}
           >
             <Text size="huge" weight="bold">{`}`}</Text>
           </motion.div>
