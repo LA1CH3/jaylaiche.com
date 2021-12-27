@@ -8,7 +8,7 @@ Here are some cool things I've built or helped build:
 
 [Capital One Small Business Card website](https://www.capitalone.com/small-business/credit-cards/homepage/)
 
-I am currently the lead engineer/engineering manager for the Small Business Card section of the Capital One website. I recently led modernized rebuilds of our [homepage](https://www.capitalone.com/small-business/credit-cards/homepage/), ["all cards" page](https://www.capitalone.com/small-business/credit-cards/) and ["product detail" pages](https://www.capitalone.com/small-business/credit-cards/spark-cash-plus/). The site is a Angular static site that pulls data and content from various sources such as an internal CMS, internal APIs, and external APIs.
+I was previously the lead engineer/engineering manager for the Small Business Card section of the Capital One website. I led modernized rebuilds of our [homepage](https://www.capitalone.com/small-business/credit-cards/homepage/), ["all cards" page](https://www.capitalone.com/small-business/credit-cards/) and ["product detail" pages](https://www.capitalone.com/small-business/credit-cards/spark-cash-plus/). The site is a Angular static site that pulls data and content from various sources such as an internal CMS, internal APIs, and external APIs.
 
 [Capital One Small Business Card application](https://www.capitalone.com/small-business/credit-cards/spark-cash-plus/)
 
@@ -24,4 +24,8 @@ React component library built using Stitches. Its the component library used to 
 
 The website you are on right now. This website is built using Next.js, Stitches, and MDX.
 
-export default ({ children }) => <AppLayout meta={meta}>{children}</AppLayout>;
+export default ({ children }) => (
+  <AppLayout meta={meta}>
+    {children}
+  </AppLayout>
+);
